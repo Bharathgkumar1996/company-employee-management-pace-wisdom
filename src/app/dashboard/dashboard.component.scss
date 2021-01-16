@@ -1,0 +1,551 @@
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #FE4F53;
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+  
+  .text-muted {
+    font-size: 15px !important;
+    color: #F04F53 !important;
+    font-weight: 600;
+  }
+  
+  .borderD {
+    border-bottom: 0.11px solid #F04F53;
+  }
+  
+  .boxshadow {
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-nowrap {
+    color: #6C6C6C;
+    font-size: 13px;
+  }
+  
+  .dFlex {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .intText {
+    color: #6C6C6C;
+    font-size: 16px;
+  }
+  
+  .padding {
+    padding: 25px 15px 15px 15px !important;
+  }
+  
+  .countText {
+    font-size: 26px;
+    font-weight: 400;
+  }
+  
+  .table tbody tr {
+    color: #2D215A;
+    font-size: 14px;
+    // opacity: 0.5;
+    border-bottom: 0.1px solid antiquewhite;
+  }
+  
+  .table thead tr th {
+    font-size: 14px !important;
+    font-weight: 500;
+    color: #2D215A;
+    border-bottom: 0.1px solid antiquewhite;
+  }
+  
+  .searchButton {
+    padding: 4px 5px 4px 5px;
+    height: 32px;
+    margin: -23px 0% 4px auto;
+    border: 1px solid #F04F53;
+    border-radius: 6px;
+  }
+  
+  .searchButton1 {
+    padding: 4px 6px 4px 6px;
+    height: 38px;
+    border: 1px solid #F04F53;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .decr {
+    height: 38px;
+    width: 41%;
+    border: 1px solid #F04F53;
+    border-radius: 2px;
+    background: #EDEBF2;
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .field {
+    height: 38px;
+    width: 21%;
+    border: 1px solid #F04F53;
+    border-radius: 2px;
+    background: #EDEBF2;
+    padding: 10px;
+  }
+  
+  .circle {
+    width: 46px;
+    height: 38px;
+    border-radius: 6px;
+    border: 1px solid #F04F53;
+    line-height: 44px;
+    text-align: center;
+    background: #F04F53;
+    color: white;
+  }
+  
+  .search {
+    background: #F04F53;
+    border: 1px solid #F04F53;
+    color: white;
+    padding: 0px 18px 0px 18px;
+    font-size: 14px;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .outflow {
+    height: 32px;
+    width: 70%;
+    border: 1px solid #F04F53;
+    border-radius: 2px;
+    background: #EDEBF2;
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .trash {
+    font-size: 14px;
+    color: #A797E7;
+  }
+  
+  .int {
+    margin-left: 8%;
+    margin-top: 1%;
+    font-size: 24px;
+    color: #F04F53;
+  }
+  
+  .dropdown {
+    height: 30px;
+    margin: -10px 4% 4px auto;
+    border: 1px solid #F04F53;
+    border-radius: 4px;
+    padding: 4px 5px 4px 5px;
+  }
+  
+  .overviewBtn {
+    background: #F04F53;
+    border: 1px solid #F04F53;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 30px;
+    outline: none;
+    width: 50%;
+  }
+  
+
+
+  .overviewBtnSearch {
+    background: #F04F53;
+    border: 1px solid #F04F53;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: none;
+    width: 50%;
+  }
+
+  // progress css
+  @import url(https://fonts.googleapis.com/css?family=Lato:700);
+  // -- vars
+  $bg-color: #34495e;
+  $default-size: 1em;
+  $label-font-size: $default-size / 4;
+  $label-font-size-redo: $default-size * 4;
+  // -- mixins
+  @mixin size($width, $height) {
+    height: $height;
+    width: $width;
+  }
+  
+  @mixin draw-progress($progress, $color) {
+    .pie {
+        .half-circle {
+            border-color: #F04F53;
+        }
+        .half-circle1 {
+            border-color: #2D215A;
+        }
+        .left-side {
+            transform: rotate($progress * 3.6deg);
+        }
+        @if $progress <=50 {
+            .right-side {
+                display: none;
+            }
+        }
+        @else {
+            clip: rect(auto, auto, auto, auto);
+            .right-side {
+                transform: rotate(180deg);
+            }
+        }
+    }
+  }
+  
+  @mixin draw-progress--solid($progress, $color, $bg-color) {
+    background: linear-gradient(to right, $color 50%, $bg-color 50%);
+    &:before {
+        @if $progress <=50 {
+            background: $bg-color;
+            transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+        }
+        @else {
+            background: $color;
+            transform: rotate((100 - $progress) / 100 * 360deg);
+        }
+    }
+  }
+  
+  // -- selectors
+  html,
+  body {
+    background: #ecf0f1;
+    color: #444;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  .set-size {
+    font-size: 10em;
+  }
+  
+  .charts-container {
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+  }
+  
+  .pie-wrapper1 {
+    @include size($default-size, $default-size);
+    // float: left;
+    margin: 15px 15px 15px 54px;
+    position: relative;
+    &:nth-child(3n + 1) {
+        clear: both;
+    }
+    .pie {
+        @include size(100%, 100%);
+        clip: rect(0, $default-size, $default-size, $default-size / 2);
+        left: 0;
+        position: absolute;
+        top: 0;
+        .half-circle {
+            @include size(100%, 100%);
+            border: ($default-size / 10) solid #F04F53;
+            border-radius: 50%;
+            // clip: rect(0, $default-size / 2, $default-size, 0);
+            clip: rect(0, 1.8em, 1.5em, 0);
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+        .half-circle1 {
+            @include size(100%, 100%);
+            border: ($default-size / 10) solid #2D215A;
+            border-radius: 50%;
+            // clip: rect(0, $default-size / 2, $default-size, 0);
+            clip: rect(0, 1.8em, 1.5em, 0);
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+    }
+    .label {
+        border-radius: 50%;
+        bottom: $label-font-size-redo / 10;
+        color: #ecf0f1;
+        cursor: default;
+        display: block;
+        font-size: $label-font-size;
+        left: $label-font-size-redo / 10;
+        line-height: $label-font-size-redo * .70;
+        position: absolute;
+        right: $label-font-size-redo / 10;
+        text-align: center;
+        top: $label-font-size-redo / 10;
+        .smaller {
+            color: #bdc3c7;
+            font-size: .45em;
+            padding-bottom: 20px;
+            vertical-align: super;
+        }
+    }
+    .shadow {
+        @include size(100%, 100%);
+        border: $default-size / 10 solid #bdc3c7;
+        border-radius: 50%;
+        box-shadow: none !important;
+    }
+    &.style-2 {
+        .label {
+            background: none;
+            color: #7f8c8d;
+            .smaller {
+                color: #bdc3c7;
+            }
+        }
+    }
+    &.progress-30 {
+        @include draw-progress(30, #3498db);
+    }
+    &.progress-60 {
+        @include draw-progress(60, #9b59b6);
+    }
+    &.progress-90 {
+        @include draw-progress(90, #e67e22);
+    }
+    &.progress-45 {
+        @include draw-progress(45, #1abc9c);
+    }
+    &.progress-75 {
+        @include draw-progress(75, #8e44ad);
+    }
+    &.progress-95 {
+        @include draw-progress(95, #e74c3c);
+    }
+  }
+  
+  .pie-wrapper {
+    @include size($default-size, $default-size);
+    float: left;
+    margin: 15px 15px 15px 54px;
+    position: relative;
+    &:nth-child(3n + 1) {
+        clear: both;
+    }
+    .pie {
+        @include size(100%, 100%);
+        clip: rect(0, $default-size, $default-size, $default-size / 2);
+        left: 0;
+        position: absolute;
+        top: 0;
+        .half-circle {
+            @include size(100%, 100%);
+            border: ($default-size / 10) solid #F04F53;
+            border-radius: 50%;
+            // clip: rect(0, $default-size / 2, $default-size, 0);
+            clip: rect(0, 1.8em, 1.5em, 0);
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+        .half-circle1 {
+            @include size(100%, 100%);
+            border: ($default-size / 10) solid #2D215A;
+            border-radius: 50%;
+            // clip: rect(0, $default-size / 2, $default-size, 0);
+            clip: rect(0, 1.8em, 1.5em, 0);
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+    }
+    .label {
+        border-radius: 50%;
+        bottom: $label-font-size-redo / 10;
+        color: #ecf0f1;
+        cursor: default;
+        display: block;
+        font-size: $label-font-size;
+        left: $label-font-size-redo / 10;
+        line-height: $label-font-size-redo * .70;
+        position: absolute;
+        right: $label-font-size-redo / 10;
+        text-align: center;
+        top: $label-font-size-redo / 10;
+        .smaller {
+            color: #bdc3c7;
+            font-size: .45em;
+            padding-bottom: 20px;
+            vertical-align: super;
+        }
+    }
+    .shadow {
+        @include size(100%, 100%);
+        border: $default-size / 10 solid #bdc3c7;
+        border-radius: 50%;
+        box-shadow: none !important;
+    }
+    &.style-2 {
+        .label {
+            background: none;
+            color: #7f8c8d;
+            .smaller {
+                color: #bdc3c7;
+            }
+        }
+    }
+    &.progress-30 {
+        @include draw-progress(30, #3498db);
+    }
+    &.progress-60 {
+        @include draw-progress(60, #9b59b6);
+    }
+    &.progress-90 {
+        @include draw-progress(90, #e67e22);
+    }
+    &.progress-45 {
+        @include draw-progress(45, #1abc9c);
+    }
+    &.progress-75 {
+        @include draw-progress(75, #8e44ad);
+    }
+    &.progress-95 {
+        @include draw-progress(95, #e74c3c);
+    }
+  }
+  
+  .pie-wrapper--solid {
+    border-radius: 50%;
+    overflow: hidden;
+    &:before {
+        border-radius: 0 100% 100% 0 / 50%;
+        content: '';
+        display: block;
+        height: 100%;
+        margin-left: 50%;
+        transform-origin: left;
+    }
+    .label {
+        background: transparent;
+    }
+    &.progress-65 {
+        @include draw-progress--solid(65, #e67e22, $bg-color);
+    }
+    &.progress-25 {
+        @include draw-progress--solid(25, #9b59b6, $bg-color);
+    }
+    &.progress-88 {
+        @include draw-progress--solid(88, #3498db, $bg-color);
+    }
+  }
+  
+  .graph {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  
+  .wh-text {
+    color: #ffffff;
+  }
+  
+  .test {
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% - 10px);
+    display: block;
+  }
+  
+  input {
+    border: 1px solid #F04F53;
+    outline: #F04F53;
+  }
+  textarea{
+    border: 1px solid #F04F53;
+    outline: #F04F53;
+  }
+
+  textarea:focus {
+    outline: #F04F53;
+    border: 1px solid #F04F53;
+    box-shadow: 0 0 4px #F04F53;
+    border-left: 8px solid #F04F53;
+  }
+  
+  input:focus {
+    outline: #F04F53;
+    border: 1px solid #F04F53;
+    box-shadow: 0 0 4px #F04F53;
+    border-left: 8px solid #F04F53;
+  }
+  
+  @media only screen and (max-width:500px) {
+    .perfor-details {
+        display: flex;
+        flex-direction: column;
+    }
+    .set-size {
+        margin-left: 60px;
+    }
+  }
+  
+  // @media only screen and (min-width:351px) and (max-width:400px) {
+  //   .set-size {
+  //       margin-left: 40px;
+  //   }
+  //   .outflow {
+  //       width: 60%;
+  //   }
+  //   .table-details {
+  //       overflow-x: scroll;
+  //   }
+  //   table {
+  //       width: 400px;
+  //   }
+  //   .searchButton,
+  //   .dropdown,
+  //   .searchButton1 {
+  //       font-size: 14px;
+  //   }
+  // }
+  
+  // @media only screen and (min-width:200px) and (max-width:350px) {
+  //   .set-size {
+  //       margin-left: 0px;
+  //   }
+  //   .table-details {
+  //       overflow-x: scroll;
+  //   }
+  //   input {
+  //       font-size: 14px;
+  //   }
+  //   table {
+  //       width: 400px;
+  //   }
+  //   .countText {
+  //       font-size: 22px;
+  //       font-weight: 400;
+  //   }
+  //   .graph {
+  //       font-size: 12px;
+  //   }
+  //   .outflow {
+  //       width: 60%;
+  //   }
+  //   .searchButton,
+  //   .dropdown,
+  //   .searchButton1 {
+  //       font-size: 12px;
+  //   }
+  // }

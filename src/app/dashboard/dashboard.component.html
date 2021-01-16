@@ -1,0 +1,165 @@
+<div>
+        <div class="row pb-5">
+                <div class="col-sm-12">
+                    <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                        <div class="card-body padding">
+                            <h3 style="text-align: center;" class="card-title text-uppercase mb-0"> Admin Dahboard</h3>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    
+  
+    
+  
+  
+    <div class="row mt-3 mb-5 pb-5">
+        <div class="col-sm-4 ">
+            <!-- <div style="width: 18.5rem;"> -->
+            <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                <div class="card-body padding mb-3">
+                        <div class="row">
+                                <div class="col text-center">
+                                    <h6 class="card-title text-uppercase text-muted mb-3">
+                                        Add Companies
+                                    </h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                   <div class="col-md-12">
+                                        <form [formGroup]="companyForm" #formDirective="ngForm" >
+                                                <div class="form-group">
+                                                        <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                                        <input type="text" class="form-control" formControlName="company_name" id="exampleFormControlInput1" placeholder="Company Name" [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }">
+                                                        <div *ngIf="submitted && f.company_name.errors" class="invalid-feedback">
+                                                            <div *ngIf="f.company_name.errors.required">Company Name is required</div>
+                                                            <div *ngIf="f.company_name.errors.minlength">Give a proper Company Name</div>
+                                                        </div>
+                                                    </div>
+                                                <div class="form-group">
+                                                    <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                                    <input type="text" class="form-control" formControlName="company_code" id="exampleFormControlInput1" placeholder="Company Code" [ngClass]="{ 'is-invalid': submitted && f.company_code.errors }">
+                                                    <div *ngIf="submitted && f.company_code.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.company_code.errors.required">Company Code is required</div>
+                                                        <div *ngIf="f.company_code.errors.minlength">Company Code Minimun Length is 5</div>
+                                                        <div *ngIf="f.company_code.errors.maxlength">Company Code Maximum Length is 5</div>
+                                                    </div>
+                                                </div>
+    
+                                                    <div class="form-group">    
+                                                            <textarea class="form-control" formControlName="company_about" id="exampleFormControlInput1" placeholder="About Company" [ngClass]="{ 'is-invalid': submitted && f.company_about.errors }"></textarea>
+                                                            <div *ngIf="submitted && f.company_about.errors" class="invalid-feedback">
+                                                                <div *ngIf="f.company_about.errors.required">Describe About The company</div>
+                                                                <div *ngIf="f.company_about.errors.minlength">Describe in more word , Min 10 words</div>
+                                                            </div>
+                                                        </div>
+                    
+                                            </form>
+                                   </div> 
+                            </div>
+                        
+
+                            <div class="row">
+                                    <div class="col text-center">
+                                            <button class="overviewBtn" (click)="addCompany()">ADD NOW</button>
+                                    </div>
+                            </div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+  
+        <div class="col-sm-4 ">
+            <!-- <div style="width: 18.5rem;"> -->
+            <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                <div class="card-body padding mb-3">
+                        <div class="row">
+                                <div class="col text-center">
+                                    <h6 class="card-title text-uppercase text-muted mb-0">
+                                        MANAGE COMPANIES
+                                    </h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                    <div class="col text-center">
+                                            <button class="overviewBtn" (click)="showCompany()">MANAGE</button>
+                                    </div>
+                            </div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+  
+        <div class="col-sm-4 ">
+            <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                <div class="card-body padding mb-3">
+                        <div class="row mb-3">
+                                <div class="col text-center">
+                                    <h6 class="card-title text-uppercase text-muted mb-0">
+                                       SEARCH EMPLOYEES
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                     <form [formGroup]="searchForm">
+                                            <div class="form-group">
+                                                    <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                                    <input type="text" class="form-control" formControlName="search_employee" id="exampleFormControlInput1" placeholder="Search Employee by Code , PhoneNumber , Name" [ngClass]="{ 'is-invalid': searchSubmitted && s.search_employee.errors }">
+                                                    <div *ngIf="searchSubmitted && s.search_employee.errors" class="invalid-feedback">
+                                                        <div *ngIf="s.search_employee.errors.required">Please Enter Valid Serach Term</div>
+                                                    </div>
+                                                </div>
+                                                 </form>
+                                                 </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col text-center">
+                                            <button class="overviewBtnSearch" (click)="searchEmployee()">SEARCH</button>
+                                    </div>
+                            </div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <div class="row perfor-details">
+            <div class="col-sm-6 ">
+                <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                    <div class="card-body padding">
+                        <div class="row">
+                            <div class="col text-center">
+                                <h6 class="card-title text-uppercase text-muted mb-0">
+                                    TOtal Companies
+                                </h6>
+                                <hr class="mt-1 mb-2 borderD" />
+                                <span class="h4 font-weight-bold mb-0">{{company_info.length}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="col-sm-6 ">
+                <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                    <div class="card-body padding">
+                        <div class="row">
+                            <div class="col text-center">
+                                <h6 class="card-title text-uppercase text-muted mb-0">
+                                    Total Employees
+                                </h6>
+                                <hr class="mt-1 mb-2 borderD" />
+                                <span class="h4 font-weight-bold mb-0">{{getAllEmployee.length}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    
+   
+  </div>

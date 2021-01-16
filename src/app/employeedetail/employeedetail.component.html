@@ -1,0 +1,75 @@
+<div>
+        <div class="row pb-5">
+                <div class="col-sm-12">
+                    <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                        <div class="card-body padding">
+                            <h3 style="text-align: center;" class="card-title text-uppercase mb-0">EMPLOYEE DETAILs</h3>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row mt-3 d-flex justify-content-center">
+                <div class="col-sm-12">
+                    <!-- <div style="width: 29rem;"> -->
+                    <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                        <div class="card-body padding">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title text-uppercase ml-2 text-muted mb-0">
+                                       Employee info , reporting-manager , sub-ordinate
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="table-details">
+                                <table class="table table-borderless tabMargin mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Employee Name</th>
+                                            <th scope="col">Employee Code</th>
+                                            <th scope="col">Designation</th>
+                                            <th scope="col">View Manager / Sub-Ordinates </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let employee of employeeSearchArr">
+                                        <tr>
+                                            <td>{{employee.employee_name | titlecase }}</td>
+                                            <td>{{employee.employee_code | uppercase}}</td>
+                                            <td>{{employee.employee_designation | titlecase}}</td>
+                                            <td><button  class="overviewBtn"  (click)="openModalWithEmp(templateEmp , employee._id )">View</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+  </div>
+
+
+  <ng-template #templateEmp>  
+        <div class="modal-header">  
+          <h4 class="modal-title pull-left">Update Company</h4>  
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+            <span aria-hidden="true">×</span>  
+          </button>  
+        </div>  
+        <div class="modal-body">  
+                <div class="row">
+                        <div class="col-md-12">
+                            <label>Reporting Manager</label>
+                                <input type="text" [(ngModel)]="manger_name" class="form-control upper"   >
+                    </div>
+                    <div class="col-md-12">
+                            <label>Sub-Ordinate</label>
+                            <input type="text" [(ngModel)]="oridnate_name" class="form-control"   >
+                </div>
+                </div>
+        </div>  
+      
+        <div class="modal-footer">  
+          <button type="button" class="btn btn-default overviewBtn" (click)="modalRef.hide()">Cancel</button>
+        </div>  
+      </ng-template> 

@@ -1,0 +1,93 @@
+
+<div class="container-fluid padding-css">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Welcome To Company and Employee Management Application</h3>
+            <p class="pt-5 pb-5">Please fill in your details to register and maintain the application</p>
+        </div>
+        <div class="col-md-12">
+            <form  [formGroup]="VendorformGroup">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row pb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="firstName" id="firstname" aria-describedby="emailHelp"
+                                        placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.firstName.errors.required">Name is required</div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row pb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="emailid"  [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" formControlName="emailId"  aria-describedby="emailHelp"
+                                        placeholder="Email ID">
+                                        <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                                            <div *ngIf="f.emailId.errors.required">EmailId is required</div>
+                                            <div *ngIf="f.emailId.errors.email">Please Fill Proper EmailId</div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                        <div class="row pb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input type="password" formControlName="user_password" class="form-control" id="password"
+                                            aria-describedby="emailHelp" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.user_password.errors }">
+                                            <div *ngIf="submitted && f.user_password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.user_password.errors.required">Password is required</div>
+                                                <div *ngIf="f.user_password.errors.minlength">Password must be at least 6 characters</div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="confirmpassword"
+                                        aria-describedby="emailHelp" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" placeholder="confirmpassword">
+                                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                                            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="row pb-3">
+                                    <div class="col-md-12">
+                                            <div class="form-group"> 
+                                                    <select class="custom-select" class="form-control"  formControlName="role" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                                                            <option value=""> Select Role</option>
+                                                            <option *ngFor="let des of role" [ngValue]="des">{{des | uppercase}}</option>
+                                                          </select>
+                                                          <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                                                                <div *ngIf="f.role.errors.required"> Role  is required</div>
+                                                            </div>
+                                                        </div>
+                                        </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary pl-4 pr-4 mt-3 bg-color"style="width: 50%;" (click)="submit()" >Next</button>
+                    </div>
+                </div>
+              
+            </form>
+        </div>
+
+
+
+    </div>
+</div>

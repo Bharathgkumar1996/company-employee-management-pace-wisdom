@@ -1,0 +1,46 @@
+<div class="bg">
+    <div class="row padding-css">
+        <div class="col-md-12">
+            <div class="row ven">
+                <div class="col-md-12 pl-5 pt-5 pb-5 pr-5 vendor">
+                    <h3>Company and Employee Management Application</h3>
+                    <p>Admin Login</p>
+                    <form [formGroup]="vendorLoginformGroup">
+                        <div class="form-group">
+                            <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                            <input type="email" class="form-control" formControlName="user_email" id="exampleFormControlInput1" placeholder="name@example.com" [ngClass]="{ 'is-invalid': submitted && f.user_email.errors }">
+                            <div *ngIf="submitted && f.user_email.errors" class="invalid-feedback">
+                                <div *ngIf="f.user_email.errors.required">EmailId is required</div>
+                                <div *ngIf="f.user_email.errors.email">Please Fill Proper EmailId</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                            <input type="password" class="form-control" formControlName="user_password" id="passwordinput" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.user_password.errors }">
+                            <div *ngIf="submitted && f.user_password.errors" class="invalid-feedback">
+                                <div *ngIf="f.user_password.errors.required">Password is required</div>
+                                <div *ngIf="f.user_password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-check">
+                        <!-- <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> -->
+                        <label class="form-check-label" for="inlineCheckbox1"></label>
+                    </div>
+                    <p class="errorText" *ngIf="badError">{{errors}} ? ? ? ?</p>
+                    <div class="row signbutton text-center">
+
+                        <button class="btn btn-primary  " (click)="login()">LOGIN</button>
+
+                        <button class="btn btn-primary1 " (click)="register()" >REGISTER</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->

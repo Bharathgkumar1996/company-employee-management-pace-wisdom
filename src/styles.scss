@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+// regular style toast
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+// or
+@import "~bootstrap/scss/bootstrap";
+
+// then import toastr scss
+@import "~ngx-toastr/toastr-bs4-alert.scss";
+
+body
+{
+    overflow-x: hidden;
+}

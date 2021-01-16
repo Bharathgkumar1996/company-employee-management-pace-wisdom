@@ -1,0 +1,264 @@
+<div>
+        <div class="row pb-5">
+                <div class="col-sm-12">
+                    <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                        <div class="card-body padding">
+                            <h3 style="text-align: center;" class="card-title text-uppercase mb-0">ABOUT {{this.company_name | uppercase}}</h3>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row mt-3 d-flex justify-content-center">
+                <div class="col-sm-11">
+                    <!-- <div style="width: 29rem;"> -->
+                    <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                        <div class="card-body padding">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title text-uppercase ml-2 text-muted mb-0">
+                                       COMPANY DETAILS
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                    <div class="col-sm-6 ">
+                                        <!-- <div style="width: 29rem;"> -->
+                                        <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                                            <div class="card-body padding">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                            <div class="col">
+                                                                    <h6 class="card-title text-uppercase ml-2 text-muted mb-0">
+                                                                       About 
+                                                                    </h6>
+                                                                </div>
+                                                    </div>
+                                                    <div class="col-sm-6" *ngFor="let company of company_info">
+                                                            <button class="overviewBtn" style="float: right;" (click)="openModalWithcompany(templateCompany , company._id )">Update</button>
+                                                    </div>
+                                                </div>
+                                                <div class="table-details">
+                                                    <table class="table table-borderless tabMargin mt-3">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Comapny Name</th>
+                                                                <th scope="col">Company Code</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody *ngFor="let company of company_info">
+                                                            <tr>
+                                                                <td>{{company.company_name | uppercase}}</td>
+                                                                <td>{{company.company_code | uppercase}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-sm-12 " *ngFor="let company of company_info">
+                                                     <p>{{company.company_about | uppercase}}</p>
+                                                   </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                              
+                                    <div class="col-sm-6 ">
+                                        <!-- <div style="width: 29rem;"> -->
+                                        <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                                            <div class="card-body padding">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="card-title text-uppercase text-muted mb-3 ml-2">
+                                                           Add Employees
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                        <div class="col-md-12">
+                                                             <form [formGroup]="employeeForm">
+                                                                     <div class="form-group">
+                                                                             <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                                                             <input type="text" class="form-control" formControlName="employee_name" id="exampleFormControlInput1" placeholder="Employee Name" [ngClass]="{ 'is-invalid': submitted && f.employee_name.errors }">
+                                                                             <div *ngIf="submitted && f.employee_name.errors" class="invalid-feedback">
+                                                                                 <div *ngIf="f.employee_name.errors.required">Employee Name is required</div>
+                                                                             </div>
+                                                                         </div>
+                                                                     <div class="form-group">
+                                                                         <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                                                         <input type="text" class="form-control" formControlName="employee_code" id="exampleFormControlInput1" placeholder="Employee Code" [ngClass]="{ 'is-invalid': submitted && f.employee_code.errors }">
+                                                                         <div *ngIf="submitted && f.employee_code.errors" class="invalid-feedback">
+                                                                             <div *ngIf="f.employee_code.errors.required">Employee Code is required</div>
+                                                                             <div *ngIf="f.employee_code.errors.minlength">Employee Code Minimun Length is 5</div>
+                                                                             <div *ngIf="f.employee_code.errors.maxlength">Employee Code Maximum Length is 5</div>
+                                                                         </div>
+                                                                     </div>
+                                                                     
+                                                                     <div class="form-group">
+                                                                            <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                                                            <input type="text" class="form-control" formControlName="employee_contact" id="exampleFormControlInput1" placeholder="Employee Contact Number" [ngClass]="{ 'is-invalid': submitted && f.employee_contact.errors }">
+                                                                            <div *ngIf="submitted && f.employee_contact.errors" class="invalid-feedback">
+                                                                                <div *ngIf="f.employee_contact.errors.required"> Contact Number  is required</div>
+                                                                                <div *ngIf="f.employee_contact.errors.minlength">Contact Number Minimun Length is 10</div>
+                                                                                <div *ngIf="f.employee_contact.errors.maxlength">Contact Number Maximum Length is 10</div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group"> 
+                                                                                <select class="custom-select" class="form-control" (change)="changeCity($event)" formControlName="employee_designation" [ngClass]="{ 'is-invalid': submitted && f.employee_designation.errors }">
+                                                                                        <option value="">Employee role</option>
+                                                                                        <option *ngFor="let des of role" [ngValue]="des">{{des | uppercase}}</option>
+                                                                                      </select>
+                                                                                      <div *ngIf="submitted && f.employee_designation.errors" class="invalid-feedback">
+                                                                                            <div *ngIf="f.employee_designation.errors.required"> Role  is required</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                 </form>
+                                                                 <div class="row ">
+                                                                    <div class="col-sm-12 d-flex justify-content-center">
+                                                                       <button class="overviewBtn" (click)="addEmployee()">Add Employee</button>
+                                                                    </div>
+                                                                 </div>
+                                                        </div> 
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row mt-3 d-flex justify-content-center">
+                <div class="col-sm-12">
+                    <!-- <div style="width: 29rem;"> -->
+                    <div class="card card-stats mb-4 mb-lg-0 boxshadow">
+                        <div class="card-body padding">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title text-uppercase ml-2 text-muted mb-0">
+                                        Employees list
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="table-details">
+                                <table class="table table-borderless tabMargin mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th  scope="col">Employee Name</th>
+                                            <th  scope="col">Employee Code</th>
+                                            <th  scope="col">Employee Designation</th>
+                                            <th  scope="col">Add Sub-ordinate</th>
+                                            <th  scope="col">Add Reporting Manager</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let employee of getAllEmployee">
+                                        <tr>
+                                            <td>{{employee.employee_name | titlecase}}</td>
+                                            <td>{{employee.employee_code | uppercase}}</td>
+                                            <td>{{employee.employee_designation | titlecase}}</td>
+                                            <td> 
+                                                <button *ngIf="employee.bind_to == null " class="overviewBtn" (click)="openModalWithSubordinate(templateSubordinate , employee._id )"> ADD SUB-ORDINATE </button>
+                                                 <button *ngIf="employee.bind_to !== null " class="overviewBtn">ADDED</button>
+                                            </td>
+                                            <td > <button  *ngIf="employee.employee_designation != 'manager'" class="overviewBtn" (click)="openModalWithClass(template , employee._id )"> ADD MANAGER</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+  </div>
+
+  <ng-template #template>  
+      <div class="modal-header">  
+        <h4 class="modal-title pull-left">Assign Reporting Manager</h4>  
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+          <span aria-hidden="true">×</span>  
+        </button>  
+      </div>  
+      <div class="modal-body">  
+       <form [formGroup]="managerForm">
+        <div class="form-group"> 
+            <select class="custom-select" class="form-control" (change)="changeManger($event)" formControlName="reporting_mangaer" [ngClass]="{ 'is-invalid': managerSubmitted && m.reporting_mangaer.errors }">
+                    <option value="">Assign Manager</option>
+                    <option *ngFor="let manager of managerArray" value="{{manager._id}}">{{manager.employee_name | uppercase}} {{manager.employee_designation}} [ {{manager.employee_code}} ]</option>
+                  </select>
+                  <div *ngIf="managerSubmitted && m.reporting_mangaer.errors" class="invalid-feedback">
+                        <div *ngIf="m.reporting_mangaer.errors.required"> Selection of Manager  is required</div>
+                    </div>
+                </div>
+       </form>
+      </div>  
+    
+      <div class="modal-footer">  
+        <button type="button" class="btn btn-default overviewBtn" (click)="modalRef.hide()">Cancel</button>
+        <button type="button" class="btn btn-default overviewBtn" (click)="assignManager()">Assign Manager</button>  
+      </div>  
+    </ng-template>  
+
+
+    <ng-template #templateSubordinate>  
+            <div class="modal-header">  
+              <h4 class="modal-title pull-left">Assign Subordinate</h4>  
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+                <span aria-hidden="true">×</span>  
+              </button>  
+            </div>  
+            <div class="modal-body">  
+             <form [formGroup]="subordinateForm">
+              <div class="form-group"> 
+                  <select class="custom-select" class="form-control" (change)="changeSubordinate($event)" formControlName="sub_ordinate" [ngClass]="{ 'is-invalid': submitSubordinate && s.sub_ordinate.errors }">
+                          <option  value="1">Assign Subordinate</option>
+                          <option [disabled]="sub._id == this.assignSoridnate.sub_ordinate_id" *ngFor="let sub of subOrdinate; " value="{{sub._id}}">{{sub.employee_name | uppercase}}  {{sub.employee_designation | uppercase}}  [ {{sub.employee_code | uppercase}} ]</option>
+                        </select>
+                        <div *ngIf="submitSubordinate && s.sub_ordinate.errors" class="invalid-feedback">
+                              <div *ngIf="s.sub_ordinate.errors.required"> Selection of Sub-ordinate  is required</div>
+                          </div>
+                      </div>
+             </form>
+            </div>  
+          
+            <div class="modal-footer">  
+              <button type="button" class="btn btn-default overviewBtn" (click)="modalRef.hide()">Cancel</button>
+              <button type="button" class="btn btn-default overviewBtn" (click)="assignSubordinate()">Assign Subordinate</button>  
+            </div>  
+          </ng-template> 
+
+
+
+          <ng-template #templateCompany>  
+                <div class="modal-header">  
+                  <h4 class="modal-title pull-left">Update Company</h4>  
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+                    <span aria-hidden="true">×</span>  
+                  </button>  
+                </div>  
+                <div class="modal-body">  
+                 <form [formGroup]="updateCompanyForm">
+                        <div class="row">
+                                <div class="col-md-12">
+                        <div class="form-group">
+                                <!-- <label for="exampleFormControlInput1">Email address</label> -->
+                                <input type="text" [(ngModel)]="company_exist_name" class="form-control" formControlName="update_company" id="exampleFormControlInput1" placeholder="Comapany Name" [ngClass]="{ 'is-invalid': update_comapny_boolean && u.update_company.errors }">
+                                <div *ngIf="update_comapny_boolean && f.update_company.errors" class="invalid-feedback">
+                                    <div *ngIf="u.update_company.errors.required"> Company Name is required</div>
+                                    <div *ngIf="u.update_company.errors.minlength">Company Name should be atleast 10</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                 </form>
+                </div>  
+              
+                <div class="modal-footer">  
+                  <button type="button" class="btn btn-default overviewBtn" (click)="modalRef.hide()">Cancel</button>
+                  <button type="button" class="btn btn-default overviewBtn" (click)="updateCommpany()">Update Company</button>  
+                </div>  
+              </ng-template> 
